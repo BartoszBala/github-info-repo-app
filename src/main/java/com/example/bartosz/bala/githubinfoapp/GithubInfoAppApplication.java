@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GithubInfoAppApplication {
 
   public static void main(String[] args) {
+    System.setProperty("spring.jackson.serialization.INDENT_OUTPUT", "true");
     SpringApplication.run(GithubInfoAppApplication.class, args);
   }
 
