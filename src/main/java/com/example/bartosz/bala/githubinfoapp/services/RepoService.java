@@ -31,10 +31,19 @@ public class RepoService {
 
   public void sortList(String[] chooseSortType, List<RepoInfo> list) {
 
-    if (chooseSortType[1].equalsIgnoreCase("asc")) {
-      repoListSorted = list.stream().sorted(Comparator.comparingInt(RepoInfo::getStars)).collect(Collectors.toList());
-    } else {
-      repoListSorted = list.stream().sorted(Comparator.comparingInt(RepoInfo::getStars).reversed()).collect(Collectors.toList());
+    String sortBy = chooseSortType[0].toLowerCase();
+    switch (sortBy) {
+
+      case "stars":
+      if (chooseSortType[1].toLowerCase().equals("asc")) {
+        repoListSorted = list.stream().sorted(Comparator.comparingInt(RepoInfo::getStars)).collect(Collectors.toList());
+      } else {
+        repoListSorted = list.stream().sorted(Comparator.comparingInt(RepoInfo::getStars).reversed()).collect(Collectors.toList());
+      }
+      break;
+
+      default:
+        repoListSorted=list;
     }
 
   }
